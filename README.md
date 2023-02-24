@@ -253,8 +253,11 @@ MACD指数平滑移动平均线Moving Average Convergence and Divergence=指数�
 <br>
 
 **参考文献**
+
 [1] MACD：
+
 https://uqer.io/community/share/5799b908228e5ba291060674
+
 http://www.360doc.com/content/14/1106/07/3033201_422867044.shtml
 
 
