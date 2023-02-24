@@ -4,11 +4,9 @@
 
 # 作业描述
 
-## 0
+**stock_data_sample.csv**和**sample_sh_sz_A.csv**两个csv文件：为某个阶段中国股市的cvs格式数据，从左开始的列名依次是日期、开盘价、最高价、最低价、收盘价、调整后收盘价、成交量、股票代码、价格上涨、价格上涨百分比），请你编写程序对其进行分析处理并完成以下几个函数：
 
-**stock_data_sample.csv**和**sample_sh_sz_A.csv**两个csv文件：为某个阶段中国股市的cvs格式数据，从左开始的列名依次是日期、开盘价、最高价、最低价、收盘价、调整后收盘价、成交量、股票代码、价格上涨、价格上涨百分比），请你编写程序对其进行分析处理并完成以下几个函数
-
-## 1 int LoadStockData(char *filename);//读入数据
+## int LoadStockData(char *filename);//读入数据
 
 实现函数LoadStockData，并对补齐缺失数据，具体要求如下：
 
@@ -20,7 +18,7 @@
 
 - 对于这些有缺失的数据，请将所有价格（包括开盘、收盘等等）用数据缺失前离这个数据最近“调整后收盘价(Adj Close)”调整后收盘价替代
 
-## 2 int Query(char * para_str);//查询类任务：查询某只股票的信息
+## int Query(char * para_str);//查询类任务：查询某只股票的信息
 
 **函数参数**：
 
@@ -60,7 +58,7 @@ para_str 表示查询的参数语句，具体格式为：
 
 例如：Query(“C 000001.SZ -h -d 2017-01-03 -a”)表示查询股票000001.SZ 2017年1月3日的最高价和调整后收盘价，查询结果输出应为：000001.SZ 2017-01-03 -h 3.18 -a 9.02
 
-## 3 int TopK(char *date, char *data, int k, int desc);//查询类任务：按日期的Top K查询
+## int TopK(char *date, char *data, int k, int desc);//查询类任务：按日期的Top K查询
 
 查询复合条件的前（后）k条记录
 
@@ -90,7 +88,7 @@ desc: 0或者1，0表示查询前k项，1表示查询后k项
 
 例如：TopK(“2017-01-03”, “Volumn”, 3, 1) 是查询2017年1月3日成交量最小3支股票
 
-## 4 double Calculate(char *para_str);//计算类任务：股票数据的基本统计指标
+## double Calculate(char *para_str);//计算类任务：股票数据的基本统计指标
 
 统计计算某只股票在给定时间段内某项数据指标的均值或标准差
 
@@ -134,7 +132,7 @@ para_str：表示统计计算的参数语句，具体格式类似股票基本信
 
 - 如果失败，返回-1.0，并输出-1
 
-## 5 void CalcMacd(char *code, char *start_date, char *end_date);//计算类任务：计算某支股票在指定日期范围内的MACD指标
+## void CalcMacd(char *code, char *start_date, char *end_date);//计算类任务：计算某支股票在指定日期范围内的MACD指标
 
 **函数参数**：code表示股票的代码，start_date表示开始日期，end_date 表示结束日期
 
@@ -168,7 +166,7 @@ MACD指数平滑移动平均线Moving Average Convergence and Divergence=指数�
 
 注：新股上市第一天，其DIF、DEA以及MACD都为0，因为当天不存在前一天，无法做迭代运算，计算新股上市第二天的EMA时，第一天的EMA需要用收盘价（而非0）来计算。本作业不必从上市第1天开始计算，在给定日期范围之前一段时间（本题可假定在给定日期范围之前30天才上市）开始迭代计算即可
 
-## 6 int MACDTopK(char *start_date, char *end_date, int k);//股票筛选类任务：按技术指标筛选股票
+## int MACDTopK(char *start_date, char *end_date, int k);//股票筛选类任务：按技术指标筛选股票
 
 此函数针对某一明确时间段（起始时间到终止时间的闭区间），计算出所有股票金叉点和死叉点的个数，并按照金叉点越多约优先；金叉点相同，死叉点越少越优先的顺序；如果金叉点和死叉点相同，则按照股票代码词典序列越低越优先，进行排序，并输出前k只股票（不满k只的情况，输出所有记录）
 
@@ -196,7 +194,7 @@ MACD指数平滑移动平均线Moving Average Convergence and Divergence=指数�
 
 如上图所示：白线表示MACD指标中的离差值DIFF、黄线代表DEA，即离差值的M天移动平均值DEA。白线上穿黄线为金叉（如图中从左往右的第一个和第三个叉），白线下穿黄线为死叉（如图中的中间的叉）。所谓“金叉买入，死叉卖出”就是在金叉点的时候买入股票，在“死叉”点的时候卖出股票
 
-## 7 int FuzzyMatch (char *query, int threshold);//股票筛选类任务：股票代码模糊匹配
+## int FuzzyMatch (char *query, int threshold);//股票筛选类任务：股票代码模糊匹配
 
 假设给你一个股票代码query作为查询，一个数字threshold作为允许的最大编辑距离数，请筛选出所有与query的编辑距离小于等于threshold的股票代码，作为模糊匹配的结果，并按照股票代码的词典序排序
 
